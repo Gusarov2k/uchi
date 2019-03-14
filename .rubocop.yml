@@ -1,0 +1,71 @@
+require: rubocop-rspec
+AllCops:
+  Exclude:
+    - 'db/schema.rb'
+  RSpec:
+    Patterns:
+    - '_test.rb$'
+    - '_spec.rb$'
+#################### Metrics ###############################
+Metrics/ModuleLength:
+  Exclude:
+    - '**/*_spec.rb'
+
+Metrics/LineLength:
+  Description: 'Limit lines to 100 characters.'
+  StyleGuide: '#80-character-limits'
+  Enabled: true
+  Max: 120
+
+Metrics/BlockLength:
+  Description: 'Avoid long blocks with many lines.'
+  Enabled: true
+  Exclude:
+    - 'config/initializers/simple_form_bootstrap.rb'
+    - '**/*_spec.rb'
+
+Metrics/AbcSize:
+  Max: 32
+
+Metrics/MethodLength:
+  Max: 25
+#################### Style ###############################
+
+
+Style/StringLiterals:
+  Description: 'Checks if uses of quotes match the configured preference.'
+  StyleGuide: '#consistent-string-literals'
+  Enabled: false
+  EnforcedStyle: single_quotes
+  SupportedStyles:
+    - single_quotes
+    - double_quotes
+
+Style/Documentation:
+  Description: 'Document classes and non-namespace modules.'
+  Enabled: false
+
+Style/FrozenStringLiteralComment:
+  Description: >-
+                 Add the frozen_string_literal comment to the top of files
+                 to help transition from Ruby 2.3.0 to Ruby 3.0.
+  Enabled: false
+
+
+Style/ClassAndModuleChildren:
+  Description: 'Checks style of children classes and modules.'
+  StyleGuide: '#namespace-definition'
+  # Moving from compact to nested children requires knowledge of whether the
+  # outer parent is a module or a class. Moving from nested to compact requires
+  # verification that the outer parent is defined elsewhere. Rubocop does not
+  # have the knowledge to perform either operation safely and thus requires
+  # manual oversight.
+  AutoCorrect: false
+  Enabled: true
+  Exclude:
+    - 'test/test_helper.rb'
+
+RSpec/ExampleLength:
+  Max: 19
+
+
