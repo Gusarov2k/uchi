@@ -27,17 +27,19 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 # Use Unicorn as the app server
 # gem 'unicorn'
-
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
-gem 'prawn'
 gem 'github_api'
+gem 'wicked_pdf'
+gem 'wkhtmltopdf-binary'
+
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
   gem 'dotenv-rails'
   gem 'pry-rails'
+  gem 'rb-readline'
   gem 'rubocop', require: false
   gem 'rubocop-rspec', require: false
 end
