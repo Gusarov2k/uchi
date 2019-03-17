@@ -8,6 +8,6 @@
 <% unless @github.nil? %>
 <h3>Results</h3>
   <% 0.upto(2) do |var| %>
-  <%= link_to 'Download', download_path(id: var+1, login: "#{@github[var].login}") %> | <%= link_to "#{@github[var].login}", github_user_path(format: 'pdf', id: var+1, login: "#{@github[var].login}") unless @github[var].nil?%><br>
+  <%= link_to 'Download', download_path(id: var+1, login: "#{@github[var].login}") unless @github[var].nil?%> | <%= link_to "#{@github[var].login}", github_user_path(format: 'pdf', id: var+1, login: "#{@github[var].login}") unless @github[var].nil?%><br>
   <% end %>
 <% end %>
