@@ -5,10 +5,9 @@ class TopUsersController < ApplicationController
 
   def create
     gh_url = params[:get_github_repo][:url].strip
-    if (%r{\Ahttps?:\/\/github.com\/[-\w].*\/[-\w].*\b} =~ gh_url) == 0
-      gh_url.gsub!(%r{\Ahttps?://github.com/}, '')
-      gh_user_and_repo = gh_url.split(/\W+/)
-      github = Github.new user: gh_user_and_repo[0], repo: gh_user_and_repo[1]
+    gh_url = gh_url.match %r{(?<http>\Ahttps?:\/\/github.com\/)(?<gh_user_name>[-\w].*)\/(?<gh_user_repo>[-\w].*)\b}
+    if gh_url
+      github = Github.new user: gh_url[2], repo: gh_url[3]
       @github = github.repositories.contribs.first(3)
     end
     render :index
