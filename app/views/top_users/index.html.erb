@@ -1,7 +1,7 @@
 <h1>github top contributions</h1>
 
-<%= form_for( :get_github_repo, method: :post, url: top_users_path ) do |f| %>
-  <%= f.text_field :github_url %><br>
+<%= form_tag( search_path, method: :post ) do %>
+  <%= text_field_tag :github_url %><br>
   <%= submit_tag('Search') %>
 <% end %>
 

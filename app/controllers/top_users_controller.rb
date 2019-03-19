@@ -1,8 +1,8 @@
 class TopUsersController < ApplicationController
   def index; end
 
-  def create
-    gh_url = params[:get_github_repo][:github_url].strip
+  def find_github_contributions
+    gh_url = params[:github_url].strip
     gh_url = gh_url.match %r{(?<http>\Ahttps?:\/\/github.com\/)(?<gh_user_name>[-\w].*)\/(?<gh_user_repo>[-\w].*)\b}
     if gh_url
       github = Github.new user: gh_url[2], repo: gh_url[3]
