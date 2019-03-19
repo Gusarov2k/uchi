@@ -9,6 +9,6 @@
 <h3>Results</h3>
   <% user_top_number = 0 %>
   <% @github.each do |user| %>
-    <%= link_to 'Download', download_path(id: user_top_number+=1, login: "#{user.login}") %> | <%= link_to "#{user.login}", github_user_path(format: 'pdf', id: user_top_number, login: "#{user.login}")%><br>
+    <%= link_to 'Download', download_path(id: user_top_number+=1, login: "#{user.login}"), target: '_blank' %> | <%= link_to "#{user.login}", github_user_path(format: 'pdf', id: user_top_number, login: "#{user.login}")%><br>
   <% end %>
 <% end %>

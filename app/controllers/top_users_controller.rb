@@ -24,13 +24,12 @@ class TopUsersController < ApplicationController
   end
 
   def download_pdf
-    html = render_to_string(action: :view_github, layout: "pdf.html")
+    html = render_to_string(template: "top_users/view_github.html.erb", layout: "pdf.html")
     pdf = WickedPdf.new.pdf_from_string(html)
 
     send_data(pdf,
               filename: "my_pdf.pdf",
-              encoding: "UTF-8",
-              template: "top_users/view_github.html.erb",
+              type: 'application/pdf',
               disposition: 'attachment')
   end
 
