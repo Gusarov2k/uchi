@@ -3,10 +3,10 @@ class TopUsersController < ApplicationController
 
   def find_github_contributions
     gh_url = params[:github_url].strip.match %r{(?<http>\Ahttps?:\/\/github.com\/)
-                                                (?<gh_user_name>[-\w].*)\/
-                                                (?<gh_user_repo>[-\w].*)\b}x
+                                                (?<user_name>[-\w].*)\/
+                                                (?<user_repo>[-\w].*)\b}x
     if gh_url
-      github = Github.new user: gh_url[2], repo: gh_url[3]
+      github = Github.new user: gh_url[:user_repo], repo: gh_url[:user_name]
       @github = github.repositories.contribs.first(3)
     end
     render :index
