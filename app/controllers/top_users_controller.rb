@@ -1,10 +1,8 @@
 class TopUsersController < ApplicationController
-  before_action :set_github_url, only: %i[create]
-
   def index; end
 
   def create
-    gh_url = params[:get_github_repo][:url].strip
+    gh_url = params[:get_github_repo][:github_url].strip
     gh_url = gh_url.match %r{(?<http>\Ahttps?:\/\/github.com\/)(?<gh_user_name>[-\w].*)\/(?<gh_user_repo>[-\w].*)\b}
     if gh_url
       github = Github.new user: gh_url[2], repo: gh_url[3]
@@ -51,10 +49,4 @@ class TopUsersController < ApplicationController
   #             disposition: 'attachment',
   #             filename: 'files-archive.zip'
   # end
-
-  private
-
-  def set_github_url
-    params.require(:get_github_repo).permit(:url)
-  end
 end

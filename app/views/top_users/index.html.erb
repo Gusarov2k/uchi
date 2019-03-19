@@ -1,13 +1,14 @@
 <h1>github top contributions</h1>
 
 <%= form_for( :get_github_repo, method: :post, url: top_users_path ) do |f| %>
-  <%= f.text_field :url %><br>
+  <%= f.text_field :github_url %><br>
   <%= submit_tag('Search') %>
 <% end %>
 
 <% unless @github.nil? %>
 <h3>Results</h3>
-  <% 0.upto(2) do |var| %>
-  <%= link_to 'Download', download_path(id: var+1, login: "#{@github[var].login}") unless @github[var].nil?%> | <%= link_to "#{@github[var].login}", github_user_path(format: 'pdf', id: var+1, login: "#{@github[var].login}") unless @github[var].nil?%><br>
+  <% var = 0 %>
+  <% @github.each do |x| %>
+    <%= link_to 'Download', download_path(id: var+=1, login: "#{x.login}") %> | <%= link_to "#{x.login}", github_user_path(format: 'pdf', id: var, login: "#{x.login}")%><br>
   <% end %>
 <% end %>
