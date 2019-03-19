@@ -3,5 +3,6 @@ Rails.application.routes.draw do
   post '/search', to: 'top_users#find_github_contributions'
   get '/view', to: 'top_users#view_github', as: :github_user
   get '/download_pdf', to: 'top_users#download_pdf', as: :download
+  get '/download_zip', to: 'top_users#dec_zip', as: :download_zip
   root 'top_users#index'
 end
