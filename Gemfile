@@ -42,6 +42,7 @@ group :development, :test do
   gem 'rb-readline'
   gem 'rubocop', require: false
   gem 'rubocop-rspec', require: false
+  gem 'vcr'
 end
 
 group :test do

@@ -1,5 +1,7 @@
 require 'rails_helper'
 require 'webmock/rspec'
+require 'support/factory_bot'
+require 'support/vcr_setup'
 
 RSpec.configure do |config|
   config.expect_with :rspec do |expectations|
